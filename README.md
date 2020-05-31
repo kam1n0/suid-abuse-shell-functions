@@ -5,27 +5,27 @@
 
 * Find all the SUID/SGID executables on the machine
 
-link suid
+[![Image of suid](https://github.com/kam1n0/suid-abuse-shell-functions/blob/master/tmp_upload/suid.png)](#)
 
 1) Execute 'suid-env2' and note that it seems to be trying to start the apache2 webserver:
 
-link suid-env2
+[![Image of suid-env2](https://github.com/kam1n0/suid-abuse-shell-functions/blob/master/tmp_upload/suid-env2.png)](#)
 
 2) Run strings on the file to look for strings of printable characters:
 
-link strings
+[![Image of strings](https://github.com/kam1n0/suid-abuse-shell-functions/blob/master/tmp_upload/strings.png)](#)
 
 * The last line "/usr/sbin/service apache2 start" suggests that the service executable is being called to start the webserver.
 * The full path of the executable (/usr/sbin/service) is being used.
 
 3) Verify the version of Bash installed on the machine is less than 4.2-048:
 
-link version
+[![Image of version](https://github.com/kam1n0/suid-abuse-shell-functions/blob/master/tmp_upload/version.png)](#)
 
 4) Create a Bash function with the name "/usr/sbin/service" that executes a new Bash shell (using -p so permissions are preserved) and export the function:
 
-link function
+[![Image of function](https://github.com/kam1n0/suid-abuse-shell-functions/blob/master/tmp_upload/function.png)](#)
 
 5) Run the suid-env2 executable to gain a root shell:
 
-link root
+[![Image of root](https://github.com/kam1n0/suid-abuse-shell-functions/blob/master/tmp_upload/root.png)](#)
